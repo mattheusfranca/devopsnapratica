@@ -1,1 +1,1 @@
-"# devopsnapratica utilizando quarkus!" 
+"# devopsnapratica" 

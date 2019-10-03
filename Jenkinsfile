@@ -14,6 +14,8 @@ pipeline {
         stage ('Build') {
             steps {
                 echo 'Esse é um pipeline de exemplo'
+				cd devopsnapratica
+				mvn install
             }
         }
     }

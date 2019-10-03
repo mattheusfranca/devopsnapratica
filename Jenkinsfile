@@ -1,6 +1,7 @@
 pipeline {
     agent any 
 	tools { 
+		docker 'Docker'
         jdk 'jdk_1.8.0'
         maven 'Maven' 
     }   
@@ -12,6 +13,16 @@ pipeline {
         }
 
         stage ('Build') {
+            steps {
+				dir("devopsnapratica"){
+                echo 'Esse é um pipeline de exemplo'
+				sh 'mvn install'
+				sh 'docker build -f src/main/docker/Dockerfile.jvm -t quarkus/devopsnapratica-jvm .'
+				}
+            }
+        }
+		
+		stage ('Deploy') {
             steps {
 				dir("devopsnapratica"){
                 echo 'Esse é um pipeline de exemplo'

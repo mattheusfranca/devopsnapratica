@@ -25,7 +25,7 @@ public class TrianguloTest {
 	 public void deveFalharAoTentarCriarTriangulo() {
 	        Exception exception = assertThrows(NaoFormaTrianguloException.class, () ->
 	        new Triangulo(3, 4, 50));
-	        assertEquals("Não forma triangulo", exception.getMessage());
+	        assertEquals("Não forma triangulo!", exception.getMessage());
 	 }
 	 
 	 @Test

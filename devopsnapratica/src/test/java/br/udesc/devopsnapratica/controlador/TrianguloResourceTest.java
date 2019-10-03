@@ -43,6 +43,6 @@ public class TrianguloResourceTest {
           .post("/triangulo/tipo")
           .then()
              .statusCode(400)
-             .body(containsString("Não forma triangulo"));
+             .body(containsString("Não forma triangulo!"));
     }
 }

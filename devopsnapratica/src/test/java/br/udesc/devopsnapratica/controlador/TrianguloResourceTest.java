@@ -34,7 +34,7 @@ public class TrianguloResourceTest {
     }
     
     @Test
-    public void testNaoFormaTriangulo() {
+    public void testNaoFormaTrianguloEndpoint() {
     	String jsonEntradaIncorreta = "{ \"ladoA\": 30, \"ladoB\": 3, \"ladoC\": 3 }";
     	given()
           .when()

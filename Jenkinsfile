@@ -21,13 +21,5 @@ pipeline {
             }
         }
 		
-		stage ('Deploy') {
-            steps {
-				dir("devopsnapratica"){
-                echo 'Esse é um pipeline de exemplo'
-				sh 'mvn install'
-				}
-            }
-        }
     }
 }

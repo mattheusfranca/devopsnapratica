@@ -16,7 +16,8 @@ pipeline {
 				dir("devopsnapratica"){
                 echo 'Esse é um pipeline de exemplo'
 				sh 'mvn install'
-				sh 'docker build -f src/main/docker/Dockerfile.jvm -t quarkus/devopsnapratica-jvm .'
+				dir("target")
+					sh 'java -jar devopsnapratica-1.0-SNAPSHOT-runner.jar'
 				}
             }
         }

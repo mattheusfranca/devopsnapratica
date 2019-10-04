@@ -22,7 +22,7 @@ pipeline {
 		
         stage ('Deploy') {
             steps {
-				dir("target"){
+				dir("devopsnapratica/target"){
                 echo 'Deploying...'
 					sh 'java -jar devopsnapratica-1.0-SNAPSHOT-runner.jar'
 				}

@@ -24,6 +24,7 @@ pipeline {
             steps {
 				dir("devopsnapratica"){
 					echo 'Deploying...'
+					sh 'rm devopsnapratica.zip'
 					script{
 						zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica.zip'
 					}

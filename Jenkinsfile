@@ -28,7 +28,17 @@ pipeline {
 					script{
 						zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica.zip'
 					}
-					sh 'curl -v -u admin:admin --upload-file devopsnapratica.zip http://192.168.2.105:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
+					sh 'curl -v -u admin:admin123 --upload-file devopsnapratica.zip http://192.168.2.105:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
+				}
+
+            }
+        }
+		
+        stage ('Sonar') {
+            steps {
+				dir("devopsnapratica"){
+					echo 'Deploying...'
+					sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.2.107:9000 -Dsonar.username=admin -Dsonar.password=admin'				
 				}
 
             }

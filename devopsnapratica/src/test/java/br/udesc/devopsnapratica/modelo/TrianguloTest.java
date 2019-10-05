@@ -46,5 +46,11 @@ public class TrianguloTest {
 		 assertEquals(TipoTriangulo.ESCALENO, triangulo.getTipoTriangulo(), "Tipo do triangulo deve ser escaleno");		 
 	 }
 	 
+	 @Test
+	 public void deveCalcularPerimetroTriangulo() throws NaoFormaTrianguloException {
+		 Triangulo triangulo = new Triangulo(4,5,6);	
+		 int perimetro = triangulo.calcularPerimetro();
+		assertEquals(15, perimetro, "O perimétro deve ser 15");
+	 }
 	 
 }

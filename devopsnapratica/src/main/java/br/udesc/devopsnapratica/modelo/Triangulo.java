@@ -2,7 +2,7 @@ package br.udesc.devopsnapratica.modelo;
 
 import br.udesc.devopsnapratica.exception.NaoFormaTrianguloException;
 
-public class Triangulo {
+public class Triangulo implements FormaGeometrica {
 
 	private int ladoA;
 	private int ladoB;
@@ -61,6 +61,11 @@ public class Triangulo {
 
 	public void setLadoC(int ladoC) {
 		this.ladoC = ladoC;
+	}
+
+	@Override
+	public int calcularPerimetro() {
+		return ladoA + ladoB + ladoC;
 	}
 
 }

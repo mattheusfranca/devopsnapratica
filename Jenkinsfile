@@ -15,7 +15,7 @@ pipeline {
             steps {
 				dir("devopsnapratica"){
                 echo 'Esse é um pipeline de exemplo'
-				sh 'mvn install -Dquarkus.http.port=8082'
+				sh 'mvn install -Dquarkus.http.port=8084'
 				}
             }
         }

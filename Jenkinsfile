@@ -27,8 +27,7 @@ pipeline {
 				script{
 					zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica.zip'
 				}
-                sh 'docker login -u admin -p admin 192.168.2.107:8123'
-				sh 'curl -v -u admin:admin123 --upload-file devopsnapratica.zip http://localhost:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
+				sh 'curl -v -u admin:admin --upload-file devopsnapratica.zip http://192.168.2.105:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
 				}
             }
         }

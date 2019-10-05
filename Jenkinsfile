@@ -23,8 +23,10 @@ pipeline {
         stage ('Deploy') {
             steps {
 				dir("devopsnapratica"){
-                echo 'Deploying...'
-				uploadArtifact("servidor-dev", "/target", "devopsnapratica-1.0-SNAPSHOT-runner.jar", 'java -jar devopsnapratica-1.0-SNAPSHOT-runner.jar')
+				echo 'Deploying...'
+				zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica'
+                sh 'docker login -u admin -p admin 192.168.2.107:8123'
+				curl -v -u admin:admin123 --upload-file devopsnapratica.zip http://localhost:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip				
 				}
             }
         }
@@ -32,14 +34,3 @@ pipeline {
     }
 }
 
-def uploadArtifact(String configurationName, String sourcePath, String artifactName, String command = '') {
-	sshPublisher(publishers: [
-		sshPublisherDesc(configName: configurationName,
-		transfers: [
-			sshTransfer(cleanRemote: false, excludes: '', execCommand: command, execTimeout: 600000,
-				flatten: false, makeEmptyDirs: true, noDefaultExcludes: false, patternSeparator: '[, ]+',
-				remoteDirectorySDF: false, removePrefix: sourcePath, sourceFiles: "${sourcePath}${artifactName}"
-			)
-		], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)
-	])
-}

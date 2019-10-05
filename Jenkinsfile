@@ -24,7 +24,9 @@ pipeline {
             steps {
 				dir("devopsnapratica"){
 				echo 'Deploying...'
-				zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica'
+				script{
+					zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica.zip'
+				}
                 sh 'docker login -u admin -p admin 192.168.2.107:8123'
 				sh 'curl -v -u admin:admin123 --upload-file devopsnapratica.zip http://localhost:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
 				}

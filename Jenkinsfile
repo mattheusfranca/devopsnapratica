@@ -30,11 +30,6 @@ pipeline {
 					}
 					sh 'curl -v -u admin:admin --upload-file devopsnapratica.zip http://192.168.2.105:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
 				}
-				post {
-                   always {
-                        deleteDir()
-                   }
-                }
 
             }
         }

@@ -33,15 +33,6 @@ pipeline {
             }
         }
 		
-        stage ('Sonar') {
-            steps {
-				dir("devopsnapratica"){
-					echo 'Deploying...'
-					sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.2.107:9000 -Dsonar.username=admin -Dsonar.password=admin'				
-				}
-
-            }
-        }
 		
     }
 }

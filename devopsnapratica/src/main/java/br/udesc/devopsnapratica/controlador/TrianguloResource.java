@@ -1,5 +1,7 @@
 package br.udesc.devopsnapratica.controlador;
 
+import java.util.Optional;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -17,13 +19,35 @@ public class TrianguloResource {
 	@Path("/tipo")
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Response verificaTriangulo(Triangulo entrada)  {
+	public Response verificarTriangulo(Triangulo entradaDTO)  {
+		Optional<Triangulo> novoTriangulo = criarTriangulo(entradaDTO);
+		if(novoTriangulo.isPresent())
+			return Response.ok(novoTriangulo.get().getTipoTriangulo()).build();
+		else
+			return Response.status(Response.Status.BAD_REQUEST).entity("Não forma triangulo!").build();
+	}
+	
+
+	@POST
+	@Path("/perimetro")
+	@Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public Response calcularPerimetroTriangulo(Triangulo entradaDTO)  {
+		Optional<Triangulo> novoTriangulo = criarTriangulo(entradaDTO);
+		if(novoTriangulo.isPresent())
+			return Response.ok(novoTriangulo.get().calcularPerimetro()).build();
+		else
+			return Response.status(Response.Status.BAD_REQUEST).entity("Não forma triangulo!").build();
+	}
+	
+	private Optional<Triangulo> criarTriangulo(Triangulo entradaDTO) {
 		Triangulo novoTriangulo;
 		try {
-			novoTriangulo = new Triangulo(entrada.getLadoA(), entrada.getLadoB(), entrada.getLadoC());
+			novoTriangulo = new Triangulo(entradaDTO.getLadoA(), entradaDTO.getLadoB(), entradaDTO.getLadoC());
 		} catch (NaoFormaTrianguloException e) {
-			return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+			return Optional.ofNullable(null);
 		}
-		return Response.ok(novoTriangulo.getTipoTriangulo()).build();
+		return Optional.of(novoTriangulo);
 	}
+	
 }

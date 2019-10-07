@@ -25,7 +25,7 @@ public class TrianguloTest {
 	 public void deveFalharAoTentarCriarTriangulo() {
 	        Exception exception = assertThrows(NaoFormaTrianguloException.class, () ->
 	        new Triangulo(3, 4, 50));
-	        assertEquals("Não forma triangulo", exception.getMessage());
+	        assertEquals("Não forma triangulo!", exception.getMessage());
 	 }
 	 
 	 @Test
@@ -46,5 +46,11 @@ public class TrianguloTest {
 		 assertEquals(TipoTriangulo.ESCALENO, triangulo.getTipoTriangulo(), "Tipo do triangulo deve ser escaleno");		 
 	 }
 	 
+	 @Test
+	 public void deveCalcularPerimetroTriangulo() throws NaoFormaTrianguloException {
+		 Triangulo triangulo = new Triangulo(4,5,6);	
+		 int perimetro = triangulo.calcularPerimetro();
+		assertEquals(15, perimetro, "O perimétro deve ser 15");
+	 }
 	 
 }

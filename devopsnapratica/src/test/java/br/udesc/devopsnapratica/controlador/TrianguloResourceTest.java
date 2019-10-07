@@ -1,14 +1,8 @@
 package br.udesc.devopsnapratica.controlador;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.CoreMatchers.is;
-
-import javax.ws.rs.core.MediaType;
 
 import org.junit.jupiter.api.Test;
-
-//import com.google.gson.Gson;
 
 import br.udesc.devopsnapratica.exception.NaoFormaTrianguloException;
 import br.udesc.devopsnapratica.modelo.TipoTriangulo;
@@ -43,6 +37,21 @@ public class TrianguloResourceTest {
           .post("/triangulo/tipo")
           .then()
              .statusCode(400)
-             .body(containsString("Não forma triangulo"));
+             .body(containsString("Não forma triangulo!"));
     }
+    
+	@Test
+	public void testCalcularPerimetroTrianguloEndpoint() {
+		String jsonEntrada = "{ \"ladoA\": 3, \"ladoB\": 3, \"ladoC\": 3 }";
+    	
+    	given()
+          .when()
+          .contentType(ContentType.JSON)
+          .body(jsonEntrada)
+          .post("/triangulo/perimetro")
+          .then()
+             .statusCode(200)
+             .body(containsString("9"));
+	}
+	
 }

@@ -15,7 +15,7 @@ pipeline {
             steps {
 				dir("devopsnapratica"){
                 echo 'Esse é um pipeline de exemplo'
-				sh 'mvn install -Dquarkus.http.port=8084'
+				sh 'mvn clean install -Dquarkus.http.port=8084'
 				}
             }
         }
@@ -26,7 +26,7 @@ pipeline {
 					echo 'Deploying...'
 					sh 'rm devopsnapratica.zip'
 					script{
-						zip archive: true, dir: 'target/', glob: '', zipFile: 'devopsnapratica.zip'
+						zip archive: true, dir: 'target/', glob: '', zipFile: 'target/devopsnapratica.zip'
 					}
 					sh 'curl -v -u admin:admin123 --upload-file devopsnapratica.zip http://192.168.2.105:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
 				}

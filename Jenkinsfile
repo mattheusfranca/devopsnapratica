@@ -27,7 +27,7 @@ pipeline {
 					script{
 						zip archive: true, dir: 'target/', glob: '', zipFile: 'target/devopsnapratica.zip'
 					}
-					sh 'curl -v -u admin:admin123 --upload-file target/devopsnapratica.zip http://10.0.75.1:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
+					sh 'curl -v -u admin:admin123 --upload-file target/devopsnapratica.zip http://192.168.56.1:8082/nexus/content/repositories/snapshots/br/udesc/devopsnapratica.zip'				
 				}
 
             }

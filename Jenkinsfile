@@ -27,15 +27,15 @@ pipeline {
       }
     }
 
-    stage('Implantação') {
+    stage('Implantacao') {
       steps {
-        sh 'mvn sonar:sonar'
+        echo 'Pulando implantação'
       }
     }
 
     stage('Finalizando') {
       steps {
-        echo 'Integração concluída'
+        echo 'IntegraÃ§Ã£o concluÃ­da'
       }
     }
 

@@ -27,6 +27,18 @@ pipeline {
       }
     }
 
+    stage('Implantação') {
+      steps {
+        sh 'mvn sonar:sonar'
+      }
+    }
+
+    stage('Finalizando') {
+      steps {
+        echo 'Integração concluída'
+      }
+    }
+
   }
   tools {
     jdk 'jdk_1.8.0'

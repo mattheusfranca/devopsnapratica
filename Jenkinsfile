@@ -11,7 +11,7 @@ pipeline {
       steps {
         dir(path: 'devopsnapratica') {
           echo 'Esse é um pipeline de exemplo'
-          sh 'mvn clean build'
+          sh 'mvn clean package'
         }
 
       }

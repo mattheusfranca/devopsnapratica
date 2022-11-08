@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Initialize') {
+    stage('Inicializando') {
       steps {
         echo 'Inciando novo pipeline'
       }
@@ -10,8 +10,8 @@ pipeline {
     stage('Build') {
       steps {
         dir(path: 'devopsnapratica') {
-          echo 'Esse é um pipeline de exemplo'
-          sh 'mvn clean build'
+          echo 'Construindo'
+          sh 'mvn clean package'
         }
 
       }
@@ -20,7 +20,7 @@ pipeline {
     stage('Test') {
       steps {
         dir(path: 'devopsnapratica') {
-          echo 'Deploying...'
+          echo 'Testando'
           sh 'mvn test'
         }
 

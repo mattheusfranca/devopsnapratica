@@ -29,13 +29,13 @@ pipeline {
 
     stage('Implantacao') {
       steps {
-        echo 'Pulando implanta��o'
+        echo 'Pulando implantação'
       }
     }
 
     stage('Finalizando') {
       steps {
-        echo 'Integração concluída'
+        echo 'Pipeline executado com sucesso!'
       }
     }
 

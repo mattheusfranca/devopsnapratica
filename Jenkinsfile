@@ -4,6 +4,7 @@ pipeline {
     stage('Inicializando') {
       steps {
         echo 'Inciando novo pipeline'
+        sh 'ls'
       }
     }
 
@@ -13,6 +14,10 @@ pipeline {
           echo 'Construindo'
           sh 'mvn clean package -DskipTests'
           sh 'ls'
+          dir(path: 'target') {
+            sh 'ls'
+          }
+
         }
 
       }

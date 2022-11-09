@@ -17,6 +17,12 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+
   }
   tools {
     jdk 'jdk_1.8.0'

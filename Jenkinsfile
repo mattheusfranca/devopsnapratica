@@ -23,6 +23,16 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        dir(path: 'devopsnapratica') {
+          echo 'Testando'
+          sh 'mvn test'
+        }
+
+      }
+    }
+
   }
   tools {
     jdk 'jdk_1.8.0'

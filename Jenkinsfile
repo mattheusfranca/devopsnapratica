@@ -17,28 +17,6 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      steps {
-        dir(path: 'devopsnapratica') {
-          echo 'Testando'
-          sh 'mvn test'
-        }
-
-      }
-    }
-
-    stage('Implantacao') {
-      steps {
-        echo 'Pulando implantação'
-      }
-    }
-
-    stage('Finalizando') {
-      steps {
-        echo 'Pipeline executado com sucesso!'
-      }
-    }
-
   }
   tools {
     jdk 'jdk_1.8.0'

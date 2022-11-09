@@ -19,7 +19,10 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'mvn test'
+        dir(path: 'devopsnapratica') {
+          sh 'mvn test'
+        }
+
       }
     }
 

@@ -30,15 +30,15 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install --file devopsnapratica/pom.xml
-    
+      
+    - name: Change directory
+      run: cd devopsnapratica
+      
     - name: Build Docker image
-      run: docker build -f devopsnapratica/src/main/docker/Dockerfile.jvm -t mattheushora/devops:v1.0 .
+      run: docker build -f src/main/docker/Dockerfile.jvm -t mattheushora/devops:v1.0 .
 
     - name: Log in to Docker Hub
       run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
-
-    - name: Change directory
-      run: cd devopsnapratica
       
     - name: Push Docker image to Docker Hub
       run: docker push mattheushora/devops:v1.0

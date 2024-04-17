@@ -30,7 +30,7 @@ jobs:
         cache: maven
     
     - name: Change directory
-      run: cd devopsnapratica
+      run: cd devopsnapratica/devopsnapratica
       
     - name: Build with Maven
       run: mvn clean install

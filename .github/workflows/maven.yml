@@ -28,11 +28,12 @@ jobs:
         java-version: '8.0'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn clean install --file devopsnapratica/pom.xml
-      
+    
     - name: Change directory
       run: cd devopsnapratica
+      
+    - name: Build with Maven
+      run: mvn clean install --file pom.xml
       
     - name: Build Docker image
       run: docker build -f src/main/docker/Dockerfile.jvm -t mattheushora/devops:v1.0 .

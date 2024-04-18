@@ -37,7 +37,7 @@ jobs:
     - name: Build Docker image
       run: |
             cd devopsnapratica
-            docker build -f src/main/docker/Dockerfile.jvm -t mattheushora/devops:v1.0 .
+            docker build -f src/main/docker/Dockerfile.jvm -t mattheushora/devops:v3.0 .
 
     - name: Log in to Docker Hub
       run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
